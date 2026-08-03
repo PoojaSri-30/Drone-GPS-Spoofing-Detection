@@ -36,7 +36,7 @@ The repo contains two versions of the detector:
 - **`gps without timeout code.py`** — the baseline version. Connects to the drone and blocks indefinitely waiting for a connection; streams position for ~1 minute before exiting.
 - **`python code with timeout.py`** — adds connection resilience: wraps the connection attempt in `asyncio.wait_for(..., timeout=60)` so the script fails gracefully instead of hanging if the drone never responds, wraps telemetry streaming in a `try/except` for error recovery, and runs for ~2 minutes.
 
-> ⚠️ **Known issue:** `python code with timeout.py` currently has a syntax error — the `System(...)` constructor call is missing its closing parenthesis, so this file won't run as-is. Fix: close the call as `System(mavsdk_server_address="localhost", port=50051)`.
+
 
 ## Tech Stack
 
